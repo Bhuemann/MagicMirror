@@ -1,0 +1,2 @@
+# MagicMirror
+Purdue CS307
