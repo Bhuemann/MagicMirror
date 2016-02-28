@@ -8,5 +8,11 @@ function login() {
 	
 }
 
+function newUser() {
+	console.log("Request handler 'newUser' was called.");
+	
+}
+
 exports.start = start;
 exports.login = login;
+exports.newUser = newUser;
