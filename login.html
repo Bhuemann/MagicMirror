@@ -4,14 +4,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="login.css">
         <!-- Leapstrap -->
-        <link rel="stylesheet" href="http://wilkesalex.github.io/leapstrap/dist/css/leapstrap.css" />
+        <link href="css/leapstrap.css" rel="stylesheet" media="screen">
         <!-- jQuery (necessary for Leapstrap's JavaScript plugins) -->
-        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="https://code.jquery.com/jquery.js"></script>
         <!-- Leap (http://js.leapmotion.com/) -->
-        <script src="//js.leapmotion.com/0.3.0-beta3/leap.js"></script>
+		<script src="https://js.leapmotion.com/leap-0.6.4.min.js"></script>
         <!-- Leapstrap -->
-        <script src="login.js"></script>
-
+        <script src="js/leapstrap.js"></script>
 
     </head>
     <body>
@@ -30,11 +29,11 @@
                                 <input type="password" name="password" placeholder="password" required>
                             </li>
                             <li>
-                                <input type="submit" value="Login">
+                                <input class="leap-interactive" leap-attractor="true" leap-click-delay="2000" type="submit" value="Login">
 
                             </li>
                             <li>
-                                <a href="createAccount.html" style="text-decoration : none">
+                                <a class="leap-interactive" leap-attractor="true" href="createAccount.html" leap-click-delay="2000" style="text-decoration : none">
                                     <input type="button" value="Create an Account">
                                 </a>
                             </li>
@@ -42,7 +41,7 @@
                     </form>
                 </section>
             </div>
+		<script>LeapManager.init({interactiveSelector:"a",maxCursors:1});</script>
 
-        <script>LeapManager.init({interactiveSelector:"a",maxCursors:1});</script>
     </body>
 </html>
