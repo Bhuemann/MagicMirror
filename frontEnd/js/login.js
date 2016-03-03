@@ -12,7 +12,7 @@ $('#login-form').submit(function(e) {
             url: '/login',
             data: $form.serialize(),
             success: function (data) {
-              alert('form was submitted');
+              alert(data);
               console.log(data);
             }
           });
