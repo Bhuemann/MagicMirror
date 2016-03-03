@@ -11,6 +11,9 @@
 		<script src="https://js.leapmotion.com/leap-0.6.4.min.js"></script>
         <!-- Leapstrap -->
         <script src="js/leapstrap.js"></script>
+		
+		<!-- Login script -->
+		<script src="login.js"></script>
 
     </head>
     <body>
@@ -22,18 +25,18 @@
                             <label for="username">Username</label>
                             <li>
 
-                                <input type="text" name="username" placeholder="username" required>
+                                <input type="text" name="username" placeholder="username" class="inputfield" required>
                             </li>
                             <label for="password">Password</label>
                             <li>
-                                <input type="password" name="password" placeholder="password" required>
+                                <input type="password" name="password" placeholder="password" class="inputfield" required>
                             </li>
                             <li>
-                                <input class="leap-interactive" leap-attractor="true" leap-click-delay="2000" type="submit" value="Login">
+                                <input class="leap-interactive" leap-attractor="true" leap-click-delay="1500" type="submit" value="Login">
 
                             </li>
                             <li>
-                                <a class="leap-interactive" leap-attractor="true" href="createAccount.html" leap-click-delay="2000" style="text-decoration : none">
+                                <a class="leap-interactive" leap-attractor="true" leap-click-delay="1500" href="createAccount.html" leap-click-delay="2000" style="text-decoration : none">
                                     <input type="button" value="Create an Account">
                                 </a>
                             </li>

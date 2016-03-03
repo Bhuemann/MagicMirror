@@ -14,7 +14,7 @@ html, body {
 
 }
 #login-form{
-
+  
   position: relative;
   margin: 0 auto;
   padding: 20px 20px 20px;
@@ -24,8 +24,11 @@ label{
 	padding-top: 10px;
 }
 
-
+.inputfield{	
+	width: 35%;
+}
 .loginform input[type=submit], input[type=button] {
+	width: 35%;
     border: 1px solid rgba(0, 0, 0, 0.3);
     background: #64c8ef;
     color: #fff;
