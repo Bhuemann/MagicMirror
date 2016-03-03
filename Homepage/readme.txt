@@ -1,0 +1,1 @@
+Just a simple homepage, can be hosted via a simple http server.
