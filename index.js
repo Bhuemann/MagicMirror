@@ -1,7 +1,7 @@
 'use strict';
 
 var express = require('express');
-var ourDB = require("./customNodeFiles/databaseController")
+var ourDB = require("./customNodeFiles/databaseHandler")
 var app = express();
 
 
@@ -12,6 +12,7 @@ app.get('/', function(req,res) {
 
 app.get('/login', function(req,res) {
 	console.log("login request received");
+	console.log(req);
 	res.send("good to go");
 });
 

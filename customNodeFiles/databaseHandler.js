@@ -1,4 +1,5 @@
 var MongoClient = require('mongodb').MongoClient;
+var querystring = require("querystring");//used to parse postData
 /*
 MongoClient.connect('mongodb://127.0.0.1:27017/accounting', function(err, connection) {
 	var collection = connection.collection('demoTable');
@@ -46,5 +47,13 @@ MongoClient.connect('mongodb://127.0.0.1:27017/accounting', function(err, connec
 	doInsert(0);
 });//end connect*/
 
-exports.login = login(req);
-exports.newUser = newUser(req);
+function login(req) {
+	return "not yet implemented";
+}
+
+function newUser(req) {
+	return "not yet implemented";
+}
+
+exports.login = login;
+exports.newUser = newUser;
