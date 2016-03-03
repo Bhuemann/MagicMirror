@@ -2,15 +2,15 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="login.css">
+        <link rel="stylesheet" href="css/login.css">
         <!-- Leapstrap -->
-        <link rel="stylesheet" href="http://wilkesalex.github.io/leapstrap/dist/css/leapstrap.css" />
+        <link href="css/leapstrap.css" rel="stylesheet" media="screen">
         <!-- jQuery (necessary for Leapstrap's JavaScript plugins) -->
-        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
         <!-- Leap (http://js.leapmotion.com/) -->
-        <script src="//js.leapmotion.com/0.3.0-beta3/leap.js"></script>
+        <script src="http://js.leapmotion.com/0.3.0-beta3/leap.js"></script>
         <!-- Leapstrap -->
-        <script src="login.js"></script>
+        <script src="js/leapstrap.js"></script>
 
 
     </head>
@@ -18,7 +18,7 @@
 
             <div class="container">
                 <section class="loginform cf" id = "login-form">
-                    <form name="login" action="/login" method="get" accept-charset="utf-8">
+                    <form name="login" action="index_submit" method="get" accept-charset="utf-8">
                         <ul>
                             <label for="username">Username</label>
                             <li>
@@ -29,13 +29,16 @@
                             <li>
                                 <input type="password" name="password" placeholder="password" required>
                             </li>
+                            <label for="password">Verify Password</label>
                             <li>
-                                <input type="submit" value="Login">
-
+                                <input type="password" name="password" placeholder="password" required>
                             </li>
                             <li>
-                                <a href="createAccount.html" style="text-decoration : none">
-                                    <input type="button" value="Create an Account">
+                                <input type="submit" value="Login">
+                            </li>
+                            <li>
+                                <a href="login.html" style="text-decoration : none">
+                                    <input type="button" value="Go Back">
                                 </a>
                             </li>
                         </ul>

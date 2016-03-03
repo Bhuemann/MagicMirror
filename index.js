@@ -7,12 +7,20 @@ app.use(bodyParser.json());
 
 
 app.get('/', function(req,res) {
+	console.log("Recieved initial connection.")
 	res.sendFile(__dirname+'/frontEnd/login.html');
 });
 
 app.get('/login', function(req,res) {
+	console.log("login request recieved");
 	console.log(req.body);
-	res.send()	
+	res.sendFile(__dirname+'/frontEnd/index.html');
+});
+
+app.get('/newUser', function(req,res) {
+	console.log("newUser request recieved");
+	console.log(req.body);
+	res.sendFile(__dirname+'/frontEnd/index.html');
 });
 
 app.use(express.static('frontEnd'));
