@@ -1,9 +1,12 @@
 {
-	"name": "mongodb-test",
-	"version": "0.0.1",
-	"description": "",
-	"dependencies": {
-		"mongodb": "2.1.7"
-	},
-	"devDependencies": {}
+  "name": "mongodb-test",
+  "version": "0.0.1",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "formidable": "^1.0.17",
+    "mongodb": "2.1.7"
+  },
+  "devDependencies": {}
 }

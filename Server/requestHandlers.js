@@ -1,9 +1,11 @@
 var querystring = require("querystring");//used to parse postData
 var fs = require("fs"); //used to serve media
 var formidable = require("formidable");//used to receive media from client
+var loginPage = require("./loginPage");
 
 function start(response) {
 	console.log("Request handler 'start' was called.");
+	/*
 	var body = '<html>' +
 		'<head>' +
 		'<meta http-equiv="Content-Type" content="text/html;' +
@@ -15,7 +17,9 @@ function start(response) {
 		'<input type="submit" value="Upload file" />' + 
 		'</form>' +
 		'</body>' +
-		'</html>';
+		'</html>';*/
+
+		var body = loginPage.content();
 
 	response.writeHead(200, {"Content-Type": "text/html"});
 	response.write(body);

@@ -1,0 +1,44 @@
+html, body {
+    background-color: #000000;
+}
+.container {
+	position: absolute;
+	background-color: #000000;
+  	text-align: center;
+  	margin: auto;
+  	top:25%;
+	bottom: 0;
+	left: 0;
+	right: 0;
+  	width: 100%;
+
+}
+#login-form{
+
+  position: relative;
+  margin: 0 auto;
+  padding: 20px 20px 20px;
+  color: #ffffff;
+}
+label{
+	padding-top: 10px;
+}
+
+
+.loginform input[type=submit], input[type=button] {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background: #64c8ef;
+    color: #fff;
+    padding: 5px 15px;
+    margin-right: 0;
+    margin-top: 15px;
+    border-radius: 3px;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
+
+}
+input[type="submit"]:hover, input[type=button]:hover{
+    background: #1179a2;
+}
+ul{
+    list-style-type: none;
+}
