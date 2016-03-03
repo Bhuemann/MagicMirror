@@ -17,8 +17,7 @@ app.get('/login', function(req,res) {
 
 app.get('/newUser', function(req,res) {
 	console.log("newUser request received");
-	console.log(req.body);
-	res.sendFile(__dirname+'/frontEnd/index.html');
+	ourDB.newUser(req.query, res);
 });
 
 app.use(express.static('frontEnd'));

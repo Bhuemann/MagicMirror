@@ -6,9 +6,6 @@ $('#login-form').submit(function(e) {
         // Get the form instance
         var $form = $(e.target);
 
-        // Get the BootstrapValidator instance
-        var bv = $form.data('bootstrapValidator');
-
         // Use Ajax to submit form data
          $.ajax({
             type: 'get',

@@ -11,14 +11,15 @@
         <script src="http://js.leapmotion.com/0.3.0-beta3/leap.js"></script>
         <!-- Leapstrap -->
         <script src="js/leapstrap.js"></script>
+        <script src="js/createAccount.js"></script>
 
 
     </head>
     <body>
 
             <div class="container">
-                <section class="loginform cf" id = "login-form">
-                    <form name="login" action="index_submit" method="get" accept-charset="utf-8">
+                <section class="loginform cf">
+                    <form name="login" action=" " method="post" accept-charset="utf-8" id="login-form">
                         <ul>
                             <label for="username">Username</label>
                             <li>
@@ -31,7 +32,7 @@
                             </li>
                             <label for="password">Verify Password</label>
                             <li>
-                                <input type="password" name="password" placeholder="password" required>
+                                <input type="password" name="verifyPassword" placeholder="password" required>
                             </li>
                             <li>
                                 <input type="submit" value="Login">

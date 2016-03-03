@@ -57,19 +57,28 @@ function login(query, res) {
 	MongoClient.connect('mongodb://127.0.0.1:27017/users', function(err, connection) {
 		var collection = connection.collection('users');
 
-		var userEntry = collection.find({'username': username}).toArray(function (err, documents) {
-			console.dir(documents);
-			//res.send("login valid");
+		var userEntry = collection.find({'username': username}).toArray(function (err, response) {
+			//console.dir(response); //uncomment this to debug the database
+			if (response.length === 0) {
+				res.send("no user found");
+				console.log("no user with username '" + username + "' found in the fucking database.");
+			} else {
+				var user = response[0];
 
-			//res.send("wrong password");
-
-			//res.send("no user found");
+				if (password === user.password) {
+					res.send("login valid");
+					console.log("Great fucking job. Successful login.");
+				} else {
+					res.send("wrong password");
+					console.log("Wrong password asshole; fuckoff.");
+				}
+			}
 		});
 
 	});//end connect
 }
 
-function newUser(req, res) {
+function newUser(query, res) {
 	var username = query.username;
 	var password = query.password;
 
@@ -79,9 +88,9 @@ function newUser(req, res) {
 	MongoClient.connect('mongodb://127.0.0.1:27017/users', function(err, connection) {
 		var collection = connection.collection('users');
 
-		collection.find({'username': username}).toArray(function (err, documents) {
-			console.dir(documents);
-			if (documents === []) {
+		collection.find({'username': username}).toArray(function (err, response) {
+			//console.dir(response); //uncomment this to debug the database
+			if (response.length === 0) {
 				insertNewUser(username, password);
 			} else {
 				res.send("username already exists");
@@ -92,7 +101,7 @@ function newUser(req, res) {
 		var insertNewUser = function (username, password) {
 			collection.insert({'username': username, 'password': password},
 				function (err, count) {
-					res('user added');
+					res.send('user added');
 					console.log("new user added!");
 				});
 		};
