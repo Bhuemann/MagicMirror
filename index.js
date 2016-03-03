@@ -12,8 +12,7 @@ app.get('/', function(req,res) {
 
 app.get('/login', function(req,res) {
 	console.log("login request received");
-	console.log(req);
-	res.send("good to go");
+	ourDB.login(req.query, res);
 });
 
 app.get('/newUser', function(req,res) {
