@@ -14,7 +14,9 @@ $('#login-form').submit(function(e) {
             success: function (data) {
               alert(data);
               console.log(data);
-              window.location.replace("index.html");
+              if(data == "login valid"){
+                              window.location.replace("index.html");
+                            }
             }
           });
     });
