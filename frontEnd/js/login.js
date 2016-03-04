@@ -12,8 +12,8 @@ $('#login-form').submit(function(e) {
             url: '/login',
             data: $form.serialize(),
             success: function (data) {
-              alert(data);
-              console.log(data);
+              //alert(data);
+              //console.log(data);
               if(data == "login valid"){
                               window.location.replace("index.html");
                             }
