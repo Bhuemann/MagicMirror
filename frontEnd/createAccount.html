@@ -6,9 +6,9 @@
         <!-- Leapstrap -->
         <link href="css/leapstrap.css" rel="stylesheet" media="screen">
         <!-- jQuery (necessary for Leapstrap's JavaScript plugins) -->
-        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="https://code.jquery.com/jquery.js"></script>
         <!-- Leap (http://js.leapmotion.com/) -->
-        <script src="http://js.leapmotion.com/0.3.0-beta3/leap.js"></script>
+		<script src="https://js.leapmotion.com/leap-0.6.4.min.js"></script>
         <!-- Leapstrap -->
         <script src="js/leapstrap.js"></script>
         <script src="js/createAccount.js"></script>
@@ -35,10 +35,10 @@
                                 <input type="password" name="verifyPassword" id="password2" placeholder="password" required>
                             </li>
                             <li>
-                                <input type="submit" value="Login" id="submit">
+                                <input class="leap-interactive" leap-attractor="true" leap-click-delay="1500" type="submit" value="Login" id="submit">
                             </li>
                             <li>
-                                <a href="login.html" style="text-decoration : none">
+                                <a class="leap-interactive" leap-attractor="true" leap-click-delay="1500" href="login.html" style="text-decoration : none">
                                     <input type="button" value="Go Back">
                                 </a>
                             </li>
