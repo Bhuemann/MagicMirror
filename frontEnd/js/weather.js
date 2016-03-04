@@ -1,14 +1,12 @@
-if ("geolocation" in navigator) {
+$(document).ready(function () {
+    if ("geolocation" in navigator) {
     navigator.geolocation.getCurrentPosition(function (position) {
         loadWeather(position.coords.latitude + ',' + position.coords.longitude);
     });
         
-} else {
-    loadWeather("Kolkata, IN", "");
-}
-
-$(document).ready(function () {
-    setInterval(getWeather, 10000);
+    } else {
+        loadWeather("Kolkata, IN", "");
+    }
 });
 
 function loadWeather(location, woeid) {
@@ -22,7 +20,7 @@ function loadWeather(location, woeid) {
             wcode = '<img class="weathericon" src="images/weathericons/' + weather.code + '.svg">';
             wind = '<p>' + weather.wind.speed + '</p><p>' + weather.units.speed + '</p>';
             humidity = weather.humidity + ' %';
-            
+            alert("made it");
             $(".location").text(city);
             $(".temperature").html(temp);
             $(".climate_bg").html(wcode);
@@ -31,7 +29,7 @@ function loadWeather(location, woeid) {
         },
         
         error: function (error) {
-            $(".error").html('<p>' + error + '</p>');
+            alert("error:\n" + error);
         }
     });
 }
