@@ -20,16 +20,14 @@ function loadWeather(location, woeid) {
             wcode = '<img class="weathericon" src="images/weathericons/' + weather.code + '.svg">';
             wind = '<p>' + weather.wind.speed + '</p><p>' + weather.units.speed + '</p>';
             humidity = weather.humidity + ' %';
-            alert("made it");
             $(".location").text(city);
-            $(".temperature").html(temp);
+            $(".temperature").html(temp + "C");
             $(".climate_bg").html(wcode);
             $(".windspeed").html(wind);
             $(".humidity").text(humidity);
         },
         
         error: function (error) {
-            alert("error:\n" + error);
         }
     });
 }
