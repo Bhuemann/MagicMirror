@@ -1,6 +1,9 @@
 $(document).ready(function() {
    $("#password2").keyup(checkPasswordMatch);
 
+   var userExistsMessage = "username already exists";
+   var successMessage = "user added";
+
 $('#login-form').submit(function(e) {
         // Prevent form submission
         e.preventDefault();
@@ -14,8 +17,12 @@ $('#login-form').submit(function(e) {
             url: '/newUser',
             data: $form.serialize(),
             success: function (data) {
-              alert('form was submitted');
-              console.log(data);
+              if (data === userExistsMessage) {
+                alert(data + "\nPlease try new username.");
+                console.log(data);
+              } else {
+                window.location.replace("/login.html")
+              }
             }
           });
     });
