@@ -15,8 +15,11 @@ $('#login-form').submit(function(e) {
               //alert(data);
               //console.log(data);
               if(data == "login valid"){
-                              window.location.replace("index.html");
-                            }
+                window.location.replace("index.html");
+              }
+              else{
+                alert(data);
+              }
             }
           });
     });
