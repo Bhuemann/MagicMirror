@@ -1,4 +1,6 @@
 $(document).ready(function() {
+   $("#password2").keyup(checkPasswordMatch);
+
 $('#login-form').submit(function(e) {
         // Prevent form submission
         e.preventDefault();
@@ -18,3 +20,21 @@ $('#login-form').submit(function(e) {
           });
     });
 });
+
+
+function checkPasswordMatch()
+{
+    var password1 = $("#password1").val();
+    var password2 = $("#password2").val();
+
+    
+ 
+    if(password1 == password2) {
+       $("#validate-status").text("valid");        
+        document.getElementById("submit").disabled = false; 
+    }
+    else {
+        $("#validate-status").text("invalid");  
+        document.getElementById("submit").disabled = true; 
+    }
+  }
