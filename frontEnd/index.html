@@ -25,40 +25,39 @@ function checkTime(i) {
     if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
     return i;
 }
-
-
 </script>
-  <style>
-.center { text-align: center; }
+<style>
+    .center { text-align: center; }
 </style>
   
 </head>
 <body class="body page-index clearfix">
-  <p class = "title">Magic Mirror</p>
+    <p class = "title">Magic Mirror</p>
   
-<body onload="startTime()">
+    <body onload="startTime()">
 
-<div class = "center" id="txt"></div>
+    <div class = "center" id="txt"></div>
 
-  <div class="container clearfix">
-   
-    <p class="location"></p>
-    <p class="temperature"></p>
-    <div class="climate_bg"></div>
-    <div class="info_bg">
-      <img class="dropicon" src="images/Droplet.svg">
-      <p class="humidity"></p>
+    <div class="container clearfix">
 
-      <img class="windicon" src="images/Wind.svg">
-      <div class="windspeed"></div>
+        <p class="location"></p>
+        <p class="temperature"></p>
+        <div class="climate_bg"></div>
+        <div class="info_bg">
+            <img class="dropicon" src="images/Droplet.svg">
+            <p class="humidity"></p>
+
+            <img class="windicon" src="images/Wind.svg">
+            <div class="windspeed"></div>
+        </div>
     </div>
-  </div>
-  
-  <p class = "quote">Perfection is not attainable, but if we chase perfection we can catch excellence. --- Vince Lombardi </p>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
-  
-  <script src="js/jquery.simpleWeather.js"></script>
-  
-  <script src="js/weather.js"></script>
+    <div class "container" id = "quote">
+        <p>Perfection is not attainable, but if we chase perfection we can catch excellence. --- Vince Lombardi </p>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+
+    <script src="js/jquery.simpleWeather.js"></script>
+
+    <script src="js/weather.js"></script>
 </body>
 </html>

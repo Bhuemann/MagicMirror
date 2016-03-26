@@ -161,9 +161,12 @@
 	color: white;
 }
 
-.quote {
-    bottom: 0;
-	text-align: center;
-	padding-top: 50px;
+#quote {
+  position: absolute;
+  text-align: center;
+  bottom: 25%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
 	color: white;
 }
