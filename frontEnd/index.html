@@ -7,12 +7,39 @@
   <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700,inherit,400" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="css/standardize.css">
   <link rel="stylesheet" href="css/index.css">
-  
+
+  <script>
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML =
+    h + ":" + m + ":" + s;
+    document.getElementById('txt').style.color = "white";
+    var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+
+
+</script>
+  <style>
+.center { text-align: center; }
+</style>
   
 </head>
 <body class="body page-index clearfix">
   <p class = "title">Magic Mirror</p>
-  <p class = "date" id="time"></p>
+  
+<body onload="startTime()">
+
+<div class = "center" id="txt"></div>
+
   <div class="container clearfix">
    
     <p class="location"></p>
