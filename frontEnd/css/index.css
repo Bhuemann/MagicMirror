@@ -51,9 +51,7 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 0;
   right: 0;
-  z-index: 9;
   width: 398px;
   height: 208px;
   margin: auto;
@@ -186,4 +184,5 @@
   left: 0;
   right: 0;
 	color: white;
+  z-index: 20;
 }
