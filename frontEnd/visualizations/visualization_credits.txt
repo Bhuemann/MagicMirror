@@ -1,0 +1,13 @@
+The visualizations in this directory came from the following ThreeJS demos
+
+flock:
+http://threejs.org/examples/#webgl_gpgpu_birds
+
+linespheres:
+http://threejs.org/examples/#webgl_lines_sphere
+
+particles:
+http://threejs.org/examples/#webgl_points_random
+
+waves:
+http://threejs.org/examples/#webgl_interactive_raycasting_points
