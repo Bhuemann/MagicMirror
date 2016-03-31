@@ -5,10 +5,10 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<!-- Leapstrap -->
-        <link href="../css/leapstrap.css" rel="stylesheet" media="screen">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" media="screen">
 		<style>
 			body {
-				background-color: #ffffff;
+				background-color: #000000;
 				margin: 0px;
 				overflow: hidden;
 				font-family:Monospace;
@@ -32,15 +32,15 @@
 		</style>
 	</head>
 	<body>
+		<script   src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 		<script src="threejs/build/three.min.js"></script>
 		<script src="threejs/js/Detector.js"></script>
 		<script src="threejs/js/libs/dat.gui.min.js"></script>
 		<script src="threejs/js/SimulationRenderer.js"></script>
 
-		  <!-- Leap (http://js.leapmotion.com/) -->
-        <script src="https://code.jquery.com/jquery.js"></script>
-		<script src="https://js.leapmotion.com/leap-0.6.4.min.js"></script>
-        <script src="../js/leapstrap.js"></script>
+		<a id="goBack" class="btn btn-lg btn-primary" style="z-index: -2;display: none;" href="../index.html">Go Back</a>
 
 		<!-- pass through vertex shader -->
 		<script id="vertexShader" type="x-shader/x-vertex">
@@ -435,6 +435,9 @@
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				container.appendChild( renderer.domElement );
+				container.style.cursor = 'none';
+
+				$("#goBack").show();
 
 				simulator = new SimulationRenderer(WIDTH, renderer);
 				simulator.init();
