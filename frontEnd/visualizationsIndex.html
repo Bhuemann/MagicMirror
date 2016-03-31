@@ -1,45 +1,43 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/login.css">
-        <!-- Leapstrap -->
-        <link href="css/leapstrap.css" rel="stylesheet" media="screen">
-        <!-- jQuery (necessary for Leapstrap's JavaScript plugins) -->
-        <script src="https://code.jquery.com/jquery.js"></script>
-        <!-- Leap (http://js.leapmotion.com/) -->
-		<script src="https://js.leapmotion.com/leap-0.6.4.min.js"></script>
-        <!-- Leapstrap -->
-        <script src="js/leapstrap.js"></script>
-        <script src="js/login.js"></script>
+<html lang="en">
+	<head>
+		<title>visualizations</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<style>
+			body {
+				background-color: #000000;
+				overflow: hidden;
+				color: white;
+			}
 
-    </head>
-    <body>
-            <div class="container">
-                <section class="loginform cf">
-                    <form name="login" action=" " method="post" accept-charset="utf-8" id="login-form">
-                        <ul>
-                            <label for="username">Username</label>
-                            <li>
+			a {
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<script   src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<script src="threejs/build/three.min.js"></script>
+		<script src="threejs/js/Detector.js"></script>
 
-                                <input type="text" name="username" placeholder="username" required>
-                            </li>
-                            <label for="password">Password</label>
-                            <li>
-                                <input type="password" name="password" placeholder="password" required>
-                            </li>
-                            <li>
-                                    <input class="leap-interactive" leap-attractor="true" leap-click-delay="1500" type="submit" value="Login">
-                            </li>
-                            <li>
-                                <a class="leap-interactive" leap-attractor="true" href="createAccount.html" leap-click-delay="1500" style="text-decoration : none">
-                                    <input type="button" value="Create an Account">
-                                </a>
-                            </li>
-                        </ul>
-                    </form>
-                </section>
-            </div>
-		<script>LeapManager.init({interactiveSelector:"a",maxCursors:1});</script>
-    </body>
+		<div class="container text-center">
+			<div style="height: 50px;"></div>
+			<h1>Choose your visualization:</h1>
+			<div style="height: 50px;"></div>
+
+			<div class="col-sm-2"></div>
+			<div class="col-sm-8 text-center">
+				<a class="btn btn-lg btn-block btn-primary" href="visualizations/flock.html">Flock</a>
+				<div></div>
+				<a class="btn btn-lg btn-block btn-primary" href="visualizations/linespheres.html">Linespheres</a>
+				<div></div>
+				<a class="btn btn-lg btn-block btn-primary" href="visualizations/waves.html">Waves</a>
+				<div></div>
+				<a class="btn btn-lg btn-block btn-primary" href="visualizations/particles.html">Particles</a>
+			</div>	
+		</div>
+	</body>
 </html>
