@@ -3,16 +3,32 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/login.css">
-        <!-- Leapstrap -->
-        <link href="css/leapstrap.css" rel="stylesheet" media="screen">
         <!-- jQuery (necessary for Leapstrap's JavaScript plugins) -->
         <script src="https://code.jquery.com/jquery.js"></script>
-        <!-- Leap (http://js.leapmotion.com/) -->
-		<script src="https://js.leapmotion.com/leap-0.6.4.min.js"></script>
-        <!-- Leapstrap -->
-        <script src="js/leapstrap.js"></script>
         <script src="js/login.js"></script>
 
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+
+<!-- jQuery UI theme or Bootstrap (optional, if you create a custom theme) -->
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<!-- jQuery UI position utility (optional, if you position the keyboard yourself) -->
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+<!-- keyboard widget css & script -->
+<link href="css/keyboard.css" rel="stylesheet">
+<script src="js/jquery.keyboard.js"></script>
+
+<!-- css for the preview keyset extension -->
+<link href="css/keyboard-previewkeyset.css" rel="stylesheet">
+
+<!-- keyboard optional extensions - include ALL (includes mousewheel) -->
+<script src="js/jquery.keyboard.extension-all.js"></script>
+
+
+	
     </head>
     <body>
             <div class="container">
@@ -20,19 +36,61 @@
                     <form name="login" action=" " method="post" accept-charset="utf-8" id="login-form">
                         <ul>
                             <label for="username">Username</label>
+                            
                             <li>
 
-                                <input type="text" name="username" placeholder="username" required>
-                            </li>
+                                <input id="text" type="text" class="ui-keyboard-input ui-widget-content ui-corner-all ui-autocomplete-input" aria-haspopup="true" name="username" placeholder="username" required>
+	<script>// Autocomplete demo
+var availableTags = ["ActionScript", "AppleScript", "Asp", "BASIC", "C", "C++", "Clojure",
+	"COBOL", "ColdFusion", "Erlang", "Fortran", "Groovy", "Haskell", "Java", "JavaScript",
+	"Lisp", "Perl", "PHP", "Python", "Ruby", "Scala", "Scheme" ];
+
+$('#text')
+	.keyboard({ layout: 'qwerty' })
+	.autocomplete({
+		source: availableTags
+	})
+	// position options added after v1.23.4
+	.addAutocomplete({
+		position : {
+			of : null,        // when null, element will default to kb.$keyboard
+			my : 'right top', // 'center top', (position under keyboard)
+			at : 'left top',  // 'center bottom',
+			collision: 'flip'
+		}
+	})
+	.addTyping();</script>
+
+				</li>
                             <label for="password">Password</label>
                             <li>
-                                <input type="password" name="password" placeholder="password" required>
+                                <input id="pswrd" type="password" name="password" placeholder="password" required>
+<script>// Autocomplete demo
+var availableTags = ["ActionScript", "AppleScript", "Asp", "BASIC", "C", "C++", "Clojure",
+	"COBOL", "ColdFusion", "Erlang", "Fortran", "Groovy", "Haskell", "Java", "JavaScript",
+	"Lisp", "Perl", "PHP", "Python", "Ruby", "Scala", "Scheme" ];
+
+$('#pswrd')
+	.keyboard({ layout: 'qwerty' })
+	.autocomplete({
+		source: availableTags
+	})
+	// position options added after v1.23.4
+	.addAutocomplete({
+		position : {
+			of : null,        // when null, element will default to kb.$keyboard
+			my : 'right top', // 'center top', (position under keyboard)
+			at : 'left top',  // 'center bottom',
+			collision: 'flip'
+		}
+	})
+	.addTyping();</script>
                             </li>
                             <li>
-                                    <input class="leap-interactive" leap-attractor="true" leap-click-delay="1500" type="submit" value="Login">
+                                    <input type="submit" value="Login">
                             </li>
                             <li>
-                                <a class="leap-interactive" leap-attractor="true" href="createAccount.html" leap-click-delay="1500" style="text-decoration : none">
+                                <a href="createAccount.html" style="text-decoration : none">
                                     <input type="button" value="Create an Account">
                                 </a>
                             </li>
