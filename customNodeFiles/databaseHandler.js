@@ -1,4 +1,5 @@
 var MongoClient = require('mongodb').MongoClient;
+var passwordHasher = require("./passwordHasher");
 
 function login(query, res) {
 	var username = query.username;

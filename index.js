@@ -4,6 +4,13 @@ var express = require('express');
 var ourDB = require("./customNodeFiles/databaseHandler")
 var app = express();
 
+//Configure Passport
+var passport = require('passport');
+var expressSession = require('express-session');
+app.use(expressSession({secret: 'TenThousand'}));//used to sign sessions
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 app.get('/', function(req,res) {
 	console.log("Recieved initial connection.")
