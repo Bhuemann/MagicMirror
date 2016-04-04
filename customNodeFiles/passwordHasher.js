@@ -9,6 +9,7 @@ function getHash(newPassword) {
 		}
 
 		newHash = hash;
+		console.log("New internal hash: " + newHash);
 	});
 
 	console.log("New hash: " + newHash);

@@ -1,5 +1,5 @@
 var MongoClient = require('mongodb').MongoClient;
-var passwordHasher = require("./passwordHasher");
+var passwordHasher = require('password-hash-and-salt');
 
 function login(query, res) {
 	var username = query.username;
@@ -19,13 +19,20 @@ function login(query, res) {
 			} else {
 				var user = response[0];
 
-				if (password === user.password) {
-					res.send("login valid");
-					console.log("Great fucking job. Successful login.");
-				} else {
-					res.send("wrong password");
-					console.log("Wrong password asshole; fuckoff.");
-				}
+				passwordHasher(password).verifyAgainst(user.passwordHash, function(error, verified) {
+					if (error) {
+						console.log("Error verifying password in databaseHandler.");
+						return;
+					}
+
+					if (verified) {
+						res.send("login valid");
+						console.log("Successful login.");
+					} else {
+						res.send("wrong password");
+						console.log("Wrong password.");
+					}
+				});
 			}
 		});
 
@@ -39,27 +46,35 @@ function newUser(query, res) {
 	console.log("New Username: " + username);
 	console.log("New Password: " + password);
 
-	MongoClient.connect('mongodb://127.0.0.1:27017/users', function(err, connection) {
-		var collection = connection.collection('users');
+	passwordHasher(password).hash(function(error, hash) {
+		if (error) {
+			console.log("Error creating password hash in databaseHandler.js");
+			return;
+		}
 
-		collection.find({'username': username}).toArray(function (err, response) {
-			//console.dir(response); //uncomment this to debug the database
-			if (response.length === 0) {
-				insertNewUser(username, password);
-			} else {
-				res.send("username already exists");
-				console.log("This goddamn username already exists! Tell the client to fuckoff");
-			}
-		});
+		MongoClient.connect('mongodb://127.0.0.1:27017/users', function(err, connection) {
+			var collection = connection.collection('users');
 
-		var insertNewUser = function (username, password) {
-			collection.insert({'username': username, 'password': password},
-				function (err, count) {
-					res.send('user added');
-					console.log("new user added!");
-				});
-		};
-	});//end connect*/
+			collection.find({'username': username}).toArray(function (err, response) {
+				//console.dir(response); //uncomment this to debug the database
+				if (response.length === 0) {
+					insertNewUser(username, hash);
+				} else {
+					res.send("username already exists");
+					console.log("Username already exists. New user not created.");
+				}
+			});
+
+			var insertNewUser = function (username, passwordHash) {
+				collection.insert({'username': username, 'passwordHash': passwordHash},
+					function (err, count) {
+						res.send('user added');
+						console.log("New user added!");
+					}
+				);
+			};
+		});//end connect*/
+	});
 }
 
 exports.login = login;
