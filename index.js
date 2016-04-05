@@ -3,14 +3,11 @@
 var express = require('express');
 var ourDB = require("./customNodeFiles/databaseHandler")
 var app = express();
-
-/**
-//Configure Passport
 var passport = require('passport');
-var expressSession = require('express-session');
-app.use(expressSession({secret: 'TenThousand'}));//used to sign sessions
-app.use(passport.initialize());
-app.use(passport.session());*/
+
+//Configure google authentication dependencies
+var strategy = require('./customNodeFiles/passport.js');
+strategy.gStrategy(passport);
 
 
 app.get('/', function(req,res) {
@@ -27,6 +24,10 @@ app.get('/newUser', function(req,res) {
 	console.log("newUser request received");
 	ourDB.newUser(req.query, res);
 });
+
+app.get('/google-login', passport.authenticate('google', { scope : ['profile', 'email'],
+	failureRedirect: 'login.html' }));
+
 
 app.use(express.static('frontEnd'));
 

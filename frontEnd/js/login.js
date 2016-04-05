@@ -24,3 +24,8 @@ $('#login-form').submit(function(e) {
           });
     });
 });
+
+function googleLogin() {
+
+  alert("hey");
+}
