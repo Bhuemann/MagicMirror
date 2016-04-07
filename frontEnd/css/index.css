@@ -60,6 +60,11 @@
   z-index: 10;
 }
 
+#music{
+  position: absolute;
+  bottom: 10px;
+}
+
 .dropicon {
   display: block;
   position: absolute;
