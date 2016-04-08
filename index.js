@@ -25,8 +25,7 @@ app.get('/newUser', function(req,res) {
 	ourDB.newUser(req.query, res);
 });
 
-app.get('/google-login', passport.authenticate('google', { scope : ['profile', 'email'],
-	failureRedirect: 'login.html' }));
+app.get('/google-login', passport.authenticate('google', { scope : ['profile', 'email']}));
 
 
 app.use(express.static('frontEnd'));
