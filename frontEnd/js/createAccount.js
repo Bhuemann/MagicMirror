@@ -4,7 +4,7 @@ $(document).ready(function() {
 	var availableTags = ["ActionScript", "AppleScript", "Asp", "BASIC", "C", "C++", "Clojure","COBOL", "ColdFusion", "Erlang", "Fortran", "Groovy", "Haskell", "Java", "JavaScript","Lisp", "Perl", "PHP", "Python", "Ruby", "Scala", "Scheme" ];
 $('#text').keyboard({ layout: 'qwerty' }).autocomplete({source: availableTags}).addAutocomplete({position : {of : null, my : 'right top', at : 'left top',  collision: 'flip'}}).addTyping();
 $('#password1').keyboard({ layout: 'qwerty' }).autocomplete({source: availableTags}).addAutocomplete({position : {of : null, my : 'right top', at : 'left top',  collision: 'flip'}}).addTyping();
-$('#password1').keyboard({ layout: 'qwerty' }).autocomplete({source: availableTags}).addAutocomplete({position : {of : null, my : 'right top', at : 'left top',  collision: 'flip'}}).addTyping();
+$('#password2').keyboard({ layout: 'qwerty' }).autocomplete({source: availableTags}).addAutocomplete({position : {of : null, my : 'right top', at : 'left top',  collision: 'flip'}}).addTyping();
 	
    $("#password2").keyup(checkPasswordMatch);
 
