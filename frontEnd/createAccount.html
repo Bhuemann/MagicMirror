@@ -3,14 +3,6 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/login.css">
-        <!-- Leapstrap -->
-        <link href="css/leapstrap.css" rel="stylesheet" media="screen">
-        <!-- jQuery (necessary for Leapstrap's JavaScript plugins) -->
-        <script src="https://code.jquery.com/jquery.js"></script>
-        <!-- Leap (http://js.leapmotion.com/) -->
-		<script src="https://js.leapmotion.com/leap-0.6.4.min.js"></script>
-        <!-- Leapstrap -->
-        <script src="js/leapstrap.js"></script>
         <script src="js/createAccount.js"></script>
 
 
@@ -24,7 +16,8 @@
                             <label for="username">Username</label>
                             <li>
 
-                                <input type="text" name="username" placeholder="username" required>
+                                <input id="key" class="ui-keyboard-input ui-widget-content ui-corner-all ui-autocomplete-input" aria-haspopup="true"type="text" name="username" placeholder="username" required>
+                                <script>"js/addKeyboard.js"</script>
                             </li>
                             <label for="password">Password</label>
                             <li>
