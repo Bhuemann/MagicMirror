@@ -1,0 +1,13 @@
+body {
+  background-color: #000000;
+  font: 400 1em/1.38 Montserrat;
+  color: #ffffff;
+
+}
+
+.info_bg p {
+  margin-bottom: -.2em;
+}
+p {
+	font-size: 16pt;
+}

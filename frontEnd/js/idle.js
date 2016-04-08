@@ -13,10 +13,10 @@ $(document).ready(function () {
         idleTime = 0;
     });
     function timerIncrement() {
-    idleTime = idleTime + 0;
+    idleTime = idleTime + 1;
     if (idleTime > 25) { // 20 minutes
         var x = Math.floor((Math.random() * 4) + 1);
-        /*
+        
         if(x == 1){
             window.location.href = "visualizations/flock.html";
         }
@@ -29,7 +29,7 @@ $(document).ready(function () {
         if(x == 4){
             window.location.href = "visualizations/waves.html";
         }
-        */
+        
     }
 }
 
