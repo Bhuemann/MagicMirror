@@ -14,7 +14,7 @@ $(document).ready(function () {
     });
     function timerIncrement() {
     idleTime = idleTime + 1;
-    if (idleTime > 5) { // 20 minutes
+    if (idleTime > 25) { // 20 minutes
         var x = Math.floor((Math.random() * 4) + 1);
         if(x == 1){
             window.location.href = "visualizations/flock.html";
