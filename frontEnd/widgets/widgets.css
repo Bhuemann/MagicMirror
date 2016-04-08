@@ -1,0 +1,65 @@
+body {
+  background-color: #000000;
+  font: 400 1em/1.38 Montserrat;
+  color: #ffffff;
+
+}
+
+.info_bg p {
+  margin-bottom: -.2em;
+}
+p {
+	font-size: 16pt;
+}
+
+.MFWeatherTxt {
+	position: absolute;
+
+	left: 500px;
+	top: 100px; 
+	font-size: 8pt;
+	width: 110px;
+
+}
+.MFWeather {
+	position: absolute;
+
+	left: 500px;
+	top: 120px; 
+	font-size: 8pt;
+	width: 110px;
+
+}
+
+.KAClockTxt {
+	position: absolute;
+	left:118px;
+	top: 100px;
+	font-size: 8pt;
+	width: 110px;
+	align: center;
+}
+.KAClock {
+	position: absolute;
+	left:100px;
+	top: 120px;
+	font-size: 8pt;
+	width: 110px;
+	align-content: center;
+}
+.KCCalendarTxt {
+	position: absolute;
+	left:300px;
+	top:100px;
+	font-size: 8pt;
+	width: 110px;
+	align: center;
+}
+.KCCalendar {
+	position: absolute;
+	left:300px;
+	top:120px;
+	font-size: 8pt;
+	width: 110px;
+	align: center;
+}
