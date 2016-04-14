@@ -1,5 +1,6 @@
 var MongoClient = require('mongodb').MongoClient;
 var passwordHasher = require('password-hash-and-salt');
+var mongoURI = 'mongodb://randypitcherii:database@ds023510.mlab.com:23510/misc'
 
 function login(query, res) {
 	var username = query.username;
@@ -8,14 +9,14 @@ function login(query, res) {
 	console.log("Username: " + username);
 	console.log("Password: " + password);
 
-	MongoClient.connect('mongodb://127.0.0.1:27017/users', function(err, connection) {
+	MongoClient.connect(mongoURI, function(err, connection) {
 		var collection = connection.collection('users');
 
 		var userEntry = collection.find({'username': username}).toArray(function (err, response) {
 			//console.dir(response); //uncomment this to debug the database
 			if (response.length === 0) {
 				res.send("no user found");
-				console.log("no user with username '" + username + "' found in the fucking database.");
+				console.log("no user with username '" + username + "' found in the database.");
 			} else {
 				var user = response[0];
 
@@ -52,7 +53,7 @@ function newUser(query, res) {
 			return;
 		}
 
-		MongoClient.connect('mongodb://127.0.0.1:27017/users', function(err, connection) {
+		MongoClient.connect(mongoURI, function(err, connection) {
 			var collection = connection.collection('users');
 
 			collection.find({'username': username}).toArray(function (err, response) {

@@ -3,6 +3,7 @@ var googleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var auth = require('./auth');
 console.log(auth);
 var MongoClient = require('mongodb').MongoClient;
+var mongoURI = 'mongodb://randypitcherii:database@ds023510.mlab.com:23510/misc'
 
 function gStrategy(passport) {
 	passport.use(new googleStrategy({
@@ -13,7 +14,7 @@ function gStrategy(passport) {
 	function (token, refreshToken, profile, done) {
 		console.log(profile);
 		//find the user based on google id
-		MongoClient.connect('mongodb://127.0.0.1:27017/users', function(err, connection) {
+		MongoClient.connect(mongoURI, function(err, connection) {
 			var collection = connection.collection('users');
 
 			var userEntry = collection.find({'username': profile.id}).toArray(function (err, response) {
