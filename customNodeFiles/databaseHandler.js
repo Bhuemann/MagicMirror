@@ -10,7 +10,7 @@ function login(query, res) {
 	console.log("Password: " + password);
 
 	MongoClient.connect(mongoURI, function(err, connection) {
-		var collection = connection.collection('users');
+		var collection = connection.collection('mmusers');
 
 		var userEntry = collection.find({'username': username}).toArray(function (err, response) {
 			//console.dir(response); //uncomment this to debug the database
@@ -54,7 +54,7 @@ function newUser(query, res) {
 		}
 
 		MongoClient.connect(mongoURI, function(err, connection) {
-			var collection = connection.collection('users');
+			var collection = connection.collection('mmusers');
 
 			collection.find({'username': username}).toArray(function (err, response) {
 				//console.dir(response); //uncomment this to debug the database
