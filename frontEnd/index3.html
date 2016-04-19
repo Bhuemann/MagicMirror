@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0">
+
+	<title>Weather App</title>
+
+	<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700,inherit,400" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="css/standardize.css">
+	<link rel="stylesheet" href="css/index.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src= "js/idle.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+	<script src="js/jquery.simpleWeather.js"></script>
+	<script src="js/weather.js"></script>
+
+	<script>
+		function startTime() {
+			var today = new Date();
+			var h = today.getHours();
+			var m = today.getMinutes();
+			var s = today.getSeconds();
+			m = checkTime(m);
+			s = checkTime(s);
+			document.getElementById('txt').innerHTML =
+			h + ":" + m + ":" + s;
+			document.getElementById('txt').style.color = "white";
+			var t = setTimeout(startTime, 500);
+		}
+		function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+</script>
+
+<style>
+	.center { text-align: center; }
+	div {
+		padding-top: 20px;
+		padding-right: 20px;
+		padding-bottom: 5px;
+		padding-left: 20px;
+	}
+	.videoButton {
+		background-color: white;
+	}
+</style>
+
+</head>
+<body onload="startTime()" class="body page-index clearfix">
+
+	<div class = "content">
+		<button class ="videoButton" onclick="location.href='index2.html'">  Go to Video </button>
+		<br>
+		<button class ="videoButton" onclick="location.href='https://mail.google.com/mail/u/0/#inbox'">  Go to Email </button>
+		<br>
+		<button class ="videoButton" onclick="location.href='visualizationsIndex.html'"> Go to Visualizations </button>
+		<br>
+		<button class ="videoButton" onclick="location.href='./widgets/widgets.html'"> Go to Applications</button>
+	</div>
+
+	<p class = "title">Magic Mirror</p>
+	<div class = "center" id="txt"></div>
+
+</div>
+
+<div class = "container" id = "weather">
+	<div class="container clearfix">
+
+		<p class="location"></p>
+		<p class="temperature"></p>
+		<div class="climate_bg"></div>
+		<div class="info_bg">
+			<img class="dropicon" src="images/Droplet.svg">
+			<p class="humidity"></p>
+
+			<img class="windicon" src="images/Wind.svg">
+			<div class="windspeed"></div>
+		</div>
+	</div>
+</div>
+
+<div>
+	<iframe id = "music" style="border:none" src="http://files.podsnack.com/iframe/embed.html?hash=a1ki4nuu&t=1460070913" width="460" height="60" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+</div>
+<div>
+	<div class = "container" id = "calendar">
+		<iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showNav=0&amp;showPrint=0&amp;showTabs=0&amp;height=300&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=en.usa%23holiday%40group.v.calendar.google.com&amp;color=%23691426&amp;ctz=America%2FNew_York" style="border:solid 1px #777" width="400" height="300" frameborder="0" scrolling="no"></iframe>
+	</div>
+</div>
+
+
+<div id="quote"></div>
+
+<script>
+	(function() {
+		var quotes = [
+		{
+			text: "I believe in living today. Not in yesterday, nor in tomorrow. - Loretta Young",
+		},
+		{
+			text: "Keep your eyes on the stars, and your feet on the ground - Theodore Roosevelt",
+		},
+		{
+			text: "In order to succeed, we must first believe that we can. - Nikos Kazantzakis",
+		}
+		];
+		var quote = quotes[Math.floor(Math.random() * quotes.length)];
+		document.getElementById("quote").innerHTML =
+		'<p>' + quote.text + '</p>';
+	})();
+</script>
+
+</body>
+</html>
