@@ -22,6 +22,9 @@ body {
 .navigation img{
   width: 100px;
 }
+.navigation a:hover{
+  background-color: #999999;
+}
 .jumbotron{
   position: absolute;
   left: 0;
