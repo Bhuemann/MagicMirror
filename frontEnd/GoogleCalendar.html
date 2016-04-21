@@ -45,26 +45,17 @@
     var recorder = null;
     
     function goBack(error){
+    // COMMENT OUT THIS LINE BELOW TO REMOVE THE TEXT
     $('errors').set('html', 'Your Gestures error: ' +error);
+    // The error value determains the strickness to the gesture
     if (error <= .25) {
       document.location.href = '/index.html';
     }
     
     }
-    
-    function elGest(error){
-        $('errors').set('html', 'L gesture error '+error);
-    }
-  
-  function veeGest(error){
-    $('errors').set('html', 'V gesture error '+error);
-  }
-  
-  function square(error){
-    $('errors').set('html', 'square error'+error);
-  }
   
   function startListening(e){
+    // COMMENT THESE "SET" functions out to remove the text
     $('status').set('html', 'Recording your movements..');
     $('errors').set('html', '');
     monitor.start(probe, recorder);
@@ -72,6 +63,7 @@
   }
   
   function stopListening(e){
+    // COMMENT OUT THIS LINE BELOW TO REMOVE THE TEXT
     $('status').set('html', 'Stopped.');
     monitor.stop();
     monitor.match();
@@ -98,7 +90,7 @@
   function hideOverlay(){
     $('overlayDiv').dispose();
   }
-  
+  /*
   function keyPressed(ev){
     $('status').set('html', 'key pressed:'+ev.code);
     if(ev.code === 17){
@@ -117,14 +109,32 @@
       hideOverlay();
       stopListening(ev);
     }
-  }
+  } */
   
     function domReadyHook(){
         gstr = new Moousture.JaroMatcher({reduceConsistency: 1});
       probe = new Moousture.MouseProbe($(document));
-      recorder = new Moousture.Recorder({maxSteps: 100, minSteps: 10, matcher: gstr});
+      recorder = new Moousture.Recorder({maxSteps: 100, minSteps: 4, matcher: gstr});
       monitor = new Moousture.ManualMonitor(20, 4);
-      gstr.addGesture([3,0], goBack);
+      // This command determains the gesture that we want
+      /******************************************************
+      
+      This is the direction encoding for the gestures
+
+                              6
+                              ^
+                        5     !      7
+                         \    !     /
+                          \ ***** /
+                    4---   *******  --- 0
+                            *****
+                              !
+                          /   !   \
+                         /   *v*   \
+                        3     2     1
+      *******************************************/
+
+      gstr.addGesture([2,3,5,6], goBack);
         
     $(document).addEvent('mousedown', startListening );
     $(document).addEvent('mouseup', stopListening );
@@ -139,7 +149,9 @@
 
 <body>
 <!-- this should provide you with notes on your attempt to go back -->
-<div id="status">Make the gesture in the black to go back to the main page</div>
+
+<!-- COMMENT THE TEXT OUT, OR CHANGE MESSAGE -->
+<div id="status">Make a U gesture in the background to go back to the main page</div>
 <div id="errors"></div>
 
 </body>
