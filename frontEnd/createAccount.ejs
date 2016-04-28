@@ -30,7 +30,7 @@
             <% if (message.length > 0) { %>
                 <div class="alert alert-danger"><%= message %></div>
             <% } %>
-            <form name="login" action="/createAccount" method="post" accept-charset="utf-8" id="login-form">
+            <form action="/createAccount" method="post" accept-charset="utf-8" id="login-form">
                 <label for="username">Username</label>
                 <input class="form-control" type="text" aria-haspopup="true" role="textbox" autocomplete="off" name="username" placeholder="username" required>
 
