@@ -41,7 +41,9 @@ module.exports = function(app, passport) {
 
 	//go to profile (make sure they're logged in)
 	app.get('/home', isLoggedIn, function(req, res) {
-		res.render('../frontEnd/index.ejs');
+		res.render('../frontEnd/index.ejs', {
+			user : req.user//pass the current session's user to the renderer
+		});
 	});
 	app.get('/index.html', function(req, res) {
 		//load login page with any flash data if it exists
@@ -56,6 +58,14 @@ module.exports = function(app, passport) {
 	app.get('/visualizationsIndex.html', isLoggedIn, function(req, res) {
 		res.redirect('/visualizations');
 	});
+
+	//google login routes
+	app.get('/google-login', passport.authenticate('google', {scope: ['profile', 'email']}));
+	app.get('/auth/google/callback',
+		passport.authenticate('google', {
+			successRedirect: '/home',
+			failureRedirect: '/login'
+		}));
 
 	//logout
 	app.get('/logout', function(req, res) {

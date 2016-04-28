@@ -122,7 +122,13 @@
 <div class = "jumbotron">
 	<div class="col-xs-6 col-xs-offset-3 main_container">
 
-		<p class = "title">Magic Mirror</p>
+	<% if (typeof user.google.name !== "undefined") { %>
+		    <p class = "title">Hello <%= user.google.name %></p>
+		<% } else if (typeof user.username !== "undefined") { %>
+		    <p class = "title">Hello <%= user.username %></p>
+		<% } else { %>
+		    <p class = "title">Magic Mirror</p>
+		<% } %>
 		<div class = "center" id="txt"></div>
 
 		<div class = "container" id = "weather">

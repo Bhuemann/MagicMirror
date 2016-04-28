@@ -6,8 +6,11 @@ var bcrypt = require('bcrypt-nodejs');
 var userSchema = mongoose.Schema({
 	username : String,
 	password : String,
-	activeGame : Boolean,
-	hasOpponent : Boolean
+	google : {
+		id: String,
+		token: String,
+		name : String
+	}
 }, {collection : 'mmUsers'});
 
 //method for hashing passwords

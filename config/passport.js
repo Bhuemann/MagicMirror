@@ -1,8 +1,12 @@
-//import passport-local dependency
+//import passport strategy dependencies
 var localStrategy = require('passport-local').Strategy;
+var googleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 //get user model
 var User = require('../app/models/user');
+
+//load google credentials
+var configAuth = require('./auth');
 
 module.exports = function(passport) {
 	//session setup
@@ -16,7 +20,7 @@ module.exports = function(passport) {
 		});
 	});
 
-
+	/** Local account----------------------------------------------------------*/
 	//signup
 	passport.use('local-signup', new localStrategy({
 		usernameField : 'username',
@@ -59,7 +63,6 @@ module.exports = function(passport) {
 		});
 	}));
 
-
 	//login
 	passport.use('local-login', new localStrategy({
 		usernameField : 'username',
@@ -95,6 +98,43 @@ module.exports = function(passport) {
 				}
 
 				return done(null, user);
+			});
+		});
+	}));
+
+	/** Google account----------------------------------------------------------*/
+	passport.use(new googleStrategy({
+		clientID        : configAuth.web.client_id,
+	    clientSecret    : configAuth.web.client_secret,
+	    callbackURL     : configAuth.web.redirect_uris[0]
+	},
+	function(token, refreshToken, profile, done) {
+		process.nextTick(function() {
+			User.findOne({ 'google.id' : profile.id}, function(err, user) {
+				if (err) {
+					return done(err);
+				}
+
+				if (user) {
+					//user found, move on.
+					return done(null, user);
+				} else {
+					//this is a new user. Add them to the database
+					var newUser = new User();
+
+					//add google info to new user
+					newUser.google.id = profile.id;
+					newUser.google.token = token;
+					newUser.google.name = profile.displayName;
+
+					//save user
+					newUser.save(function(err) {
+						if (err) {
+							throw err;
+						}
+						return done(null, newUser);
+					});
+				}
 			});
 		});
 	}));
