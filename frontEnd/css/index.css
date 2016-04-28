@@ -2,6 +2,7 @@ body {
   background-color: #000000;
   font: 400 1em/1.38 Montserrat;
   color: #000000;
+  cursor:url(../images/chrome-crosshair.cur), auto;
 }
 .navigation{
     height: 100px;
@@ -21,6 +22,10 @@ body {
 }
 .navigation img{
   width: 100px;
+  height: 100px;
+}
+.navigation a:hover{
+  background-color: #999999;
 }
 .jumbotron{
   position: absolute;
