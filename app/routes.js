@@ -59,11 +59,8 @@ module.exports = function(app, passport) {
 
 	//logout
 	app.get('/logout', function(req, res) {
-		req.user.activeGame = false;
-		req.user.save(function(err) {
-			req.logout();
-			res.redirect('/');
-		});		
+		req.logout();
+		res.redirect('/');
 	});
 
 	//function for checking user is logged in
@@ -73,6 +70,6 @@ module.exports = function(app, passport) {
 		}
 
 		//if not authenticated, redirect to default page
-		res.render('../frontEnd/login.ejs');//load default page
+		res.redirect('login');
 	}
 };
