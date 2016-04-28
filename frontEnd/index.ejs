@@ -1,0 +1,219 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0">
+
+	<title>Magic Mirror</title>
+
+	<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700,inherit,400" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="css/standardize.css">
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/alarm.css">
+
+	<script type="text/javascript" src="https://gc.kis.scr.kaspersky-labs.com/1B74BD89-2A22-4B93-B451-1C9E1052A0EC/main.js" charset="UTF-8"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src= "js/idle.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+	<script src="js/jquery.simpleWeather.js"></script>
+	<script src="js/weather.js"></script>
+	<script src="js/time.js"></script>
+	<script src="js/alarmClick.js"></script>
+
+	        
+<!-- jQuery (required) & jQuery UI + theme (optional) -->
+	<link href="docs/css/jquery-ui.min.css" rel="stylesheet">
+	<script src="docs/js/jquery-ui.min.js"></script>
+	<script src="docs/js/jquery-migrate-1.3.0.min.js"></script>
+
+	<!-- keyboard widget css & script (required) -->
+	<link href="css/keyboard.css" rel="stylesheet">
+	<script src="js/jquery.keyboard.js"></script>
+
+	<!-- keyboard extensions (optional) -->
+	<script src="js/jquery.mousewheel.js"></script>
+	<script src="js/jquery.keyboard.extension-typing.js"></script>
+	<script src="js/jquery.keyboard.extension-autocomplete.js"></script>
+	<script src="js/jquery.keyboard.extension-caret.js"></script>
+	<script src="js/login.js"></script>
+
+	<script type="text/javascript">
+	var jsalarm={
+		padfield:function(f){
+			return (f<10)? "0"+f : f
+		},
+		showcurrenttime:function(){
+			var dateobj=new Date()
+			var ct=this.padfield(dateobj.getHours())+":"+this.padfield(dateobj.getMinutes())+":"+this.padfield(dateobj.getSeconds())
+			this.ctref.innerHTML=ct
+			this.ctref.setAttribute("title", ct)
+			if (typeof this.hourwake!="undefined"){ //if alarm is set
+				if (this.ctref.title==(this.hourwake+":"+this.minutewake+":"+this.secondwake)){
+					clearInterval(jsalarm.timer)
+					window.location=document.getElementById("musicloc").value
+				}
+			}
+		},
+		init:function(){
+			var dateobj=new Date()
+			this.ctref=document.getElementById("jsalarm_ct")
+			this.submitref=document.getElementById("submitbutton")
+			this.submitref.onclick=function(){
+				jsalarm.setalarm()
+				this.value="Alarm Set"
+				this.disabled=true
+				return false
+			}
+			this.resetref=document.getElementById("resetbutton")
+			this.resetref.onclick=function(){
+				jsalarm.submitref.disabled=false
+				jsalarm.hourwake=undefined
+				jsalarm.hourselect.disabled=false
+				jsalarm.minuteselect.disabled=false
+				jsalarm.secondselect.disabled=false
+				return false
+			}
+			var selections=document.getElementsByTagName("select")
+			this.hourselect=selections[0]
+			this.minuteselect=selections[1]
+			this.secondselect=selections[2]
+			for (var i=0; i<60; i++){
+				if (i<24) //If still within range of hours field: 0-23
+					this.hourselect[i]=new Option(this.padfield(i), this.padfield(i), false, dateobj.getHours()==i)
+				this.minuteselect[i]=new Option(this.padfield(i), this.padfield(i), false, dateobj.getMinutes()==i)
+				this.secondselect[i]=new Option(this.padfield(i), this.padfield(i), false, dateobj.getSeconds()==i)
+
+			}
+			jsalarm.showcurrenttime()
+			jsalarm.timer=setInterval(function(){jsalarm.showcurrenttime()}, 1000)
+		},
+		setalarm:function(){
+			this.hourwake=this.hourselect.options[this.hourselect.selectedIndex].value
+			this.minutewake=this.minuteselect.options[this.minuteselect.selectedIndex].value
+			this.secondwake=this.secondselect.options[this.secondselect.selectedIndex].value
+			this.hourselect.disabled=true
+			this.minuteselect.disabled=true
+			this.secondselect.disabled=true
+		}
+	}
+	</script>
+</head>
+<body onload="startTime()" class="body page-index clearfix">
+	<div class="navigation">
+		<div class = "container">
+				<ul>
+					<li>
+						<button type="button" onclick="location.href='GoogleCalendar.html'"><img src="images/calendar-icon.gif"></button>
+					</li>
+					<li>
+						<button type="button" onclick="location.href='https://mail.google.com/mail/u/0/#inbox'"><img src="images/email-icon.jpg"></button>
+					</li>
+					<li>
+						<button id="alarmButton" type="button"><img src="images/alarm.jpg"></button>
+					</li>
+					<li>
+						<button type="button" onclick="location.href='./visualizations'"><img src="images/visualizationsIcon.png"></button>
+					</li>
+				</ul>
+		</div>
+	</div>
+<div class = "jumbotron">
+	<div class="col-xs-6 col-xs-offset-3 main_container">
+
+		<p class = "title">Magic Mirror</p>
+		<div class = "center" id="txt"></div>
+
+		<div class = "container" id = "weather">
+			<div class = "container" id="top">
+				<p class="location"></p>
+				<p class="temperature"></p>
+				<div class="climate_bg"></div>
+			</div>
+			<div id = "bottom">
+				<img class="dropicon" src="images/Droplet.svg">
+				<p class="humidity"></p>
+				<img class="windicon" src="images/Wind.svg">
+				<p class="windspeed"></p>
+			</div>
+		</div>
+
+		<div class = "container">
+			<div id="quote"></div>
+			<script>
+			(function() {
+				var quotes = [
+				{
+					text: "I believe in living today. Not in yesterday, nor in tomorrow. - Loretta Young",
+				},
+				{
+					text: "Keep your eyes on the stars, and your feet on the ground - Theodore Roosevelt",
+				},
+				{
+					text: "In order to succeed, we must first believe that we can. - Nikos Kazantzakis",
+				}
+				];
+				var quote = quotes[Math.floor(Math.random() * quotes.length)];
+				document.getElementById("quote").innerHTML =
+				'<p>' + quote.text + '</p>';
+			})();
+			</script>
+		</div>
+	</div>
+</div>
+
+
+
+
+<div id="music">
+	<iframe id = "music" style="border:none" src="http://files.podsnack.com/iframe/embed.html?hash=a1ki4nuu&t=1460070913" width="460" height="60" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+</div>
+
+<div id="alarm">
+		<form action="" method="">
+		<div id="jsalarmclock">
+			
+			<div><div class="leftcolumn1">Current Time:</div> <span id="jsalarm_ct" style="letter-spacing: 2px"></span></div>
+	
+			<div>
+				<div class="leftcolumn2">Set Alarm:</div> <span><select></select> Hour</span> <span><select></select> Minutes</span> <span><select></select> Seconds</span>
+			</div>
+			<div>
+				<div class="leftcolumn2">Set Alarm Action:</div> 
+				<input type="text" id="musicloc" size="55" value="https://www.youtube.com/watch?v=U8MQnek7Sms" /> 
+				<script>// Autocomplete demo
+var availableTags = ["ActionScript", "AppleScript", "Asp", "BASIC", "C", "C++", "Clojure",
+	"COBOL", "ColdFusion", "Erlang", "Fortran", "Groovy", "Haskell", "Java", "JavaScript",
+	"Lisp", "Perl", "PHP", "Python", "Ruby", "Scala", "Scheme" ];
+
+$('#musicloc')
+	.keyboard({ layout: 'qwerty' })
+	.autocomplete({
+		source: availableTags
+	})
+	// position options added after v1.23.4
+	.addAutocomplete({
+		position : {
+			of : null,        // when null, element will default to kb.$keyboard
+			my : 'right top', // 'center top', (position under keyboard)
+			at : 'left top',  // 'center bottom',
+			collision: 'flip'
+		}
+	})
+	.addTyping();</script>
+				<span style="font: normal 11px Tahoma">*Location of page to launch</span>
+			</div>
+
+				<input type="submit" value="Set Alarm!" id="submitbutton" /> <input type="reset" value="reset" id="resetbutton" />
+		</div>
+	</form>
+
+
+	<script type="text/javascript">
+
+	jsalarm.init()
+
+	</script>
+</div>
+
+
+</body>
+</html>
