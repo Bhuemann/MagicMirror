@@ -2,6 +2,7 @@ body {
   background-color: #000000;
   font: 400 1em/1.38 Montserrat;
   color: #000000;
+  cursor:url("http://www.javascriptkit.com/dhtmltutors/cursor-hand.gif"), auto;
 }
 .navigation{
     height: 100px;
