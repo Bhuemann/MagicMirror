@@ -1,5 +1,6 @@
 html, body {
     background-color: #000000;
+	cursor: url(../images/chrome-crosshair.cur), auto;
 }
 .container {
 	position: absolute;
