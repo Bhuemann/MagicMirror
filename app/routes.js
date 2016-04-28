@@ -16,7 +16,6 @@ module.exports = function(app, passport) {
 		//load login page with any flash data if it exists
 		res.redirect('/login');
 	});
-
 	//process login form
 	app.post('/login', passport.authenticate('local-login', {
 		successRedirect : '/home',
@@ -33,7 +32,6 @@ module.exports = function(app, passport) {
 		//load login page with any flash data if it exists
 		res.redirect('/createAccount');
 	});
-
 	//process signup form
 	app.post('/createAccount', passport.authenticate('local-signup', {
 		successRedirect : '/home',
